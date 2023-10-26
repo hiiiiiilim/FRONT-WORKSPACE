@@ -3,53 +3,19 @@
 <head>
     <html>내 블로그</html>
     <meta charset="UTF-8">
-    <style>
-        *{
-            box-sizing: border-box;
-        }
-        header{
-            background-color: blanchedalmond;
-            padding: 20px;
-        }
-        nav {
-            background-color: beige;
-            width: 30%;
-            height: 450px;
-            padding: 20px;
-            float:left;
-        }
-        nav ul{
-           list-style-type: none;
-           padding: 0;
-        }
-        article{
-            background-color: rgb(233, 233, 233);
-            float:left;
-            padding: 20px;
-            width: 70%;
-            height: 150px;
-        }
-        footer{
-            background-color: brown;
-        }
-        section::after{
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/blogcss.css">
 </head>
 <body>
     <h2>블로그 메인</h2>
     <p>안녕하세요. kk의 블로그 입니다.</p>
     <header>
-        <img src="1000008016.jpg">
+        <img src="1000008016.jpg" style="width: 300px;">
         <h2>딩딩이는 귀여워</h2>
     </header>
     <section>
         <nav>
             <ul>
-                <li>kk 블로그</li>
+                <li><a href="homepageInfomation.html">kk 블로그</a></li>
                 <li>딩딩이</li>
                 <li>먼작귀</li>
             </ul>
@@ -67,7 +33,7 @@
         <article>
             <h1>댓글쓰기</h1>
             <input type="text">
-            <button>입력완료</button>
+            <button >입력완료</button>
         </article>
     </section>
     <footer>

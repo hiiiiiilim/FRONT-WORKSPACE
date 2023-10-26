@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+}
+header{
+    /*background-color: blanchedalmond;*/
+    background: linear-gradient(#FFEFBA, #FFFFFF);
+    padding: 20px;
+    text-align: center;
+}
+nav {
+    background-color: beige;
+    width: 30%;
+    height: 450px;
+    padding: 20px;
+    float:left;
+}
+nav ul{
+   list-style-type: none;
+   padding: 0;
+}
+article{
+    background-color: rgb(233, 233, 233);
+    float:left;
+    padding: 20px;
+    width: 70%;
+    height: 150px;
+}
+footer{
+    /*background-color: rgba(163, 165, 42, 0.582);*/
+    /*시작할 색상 정하기*/
+    background:linear-gradient(45deg,rgb(236, 190, 236), red);
+    text-align: center;
+    padding: 20px;
+}
+section::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+@media (max-width:600px){
+    nav,article{
+        width: 100%;
+        height: auto;
+    }
+}
