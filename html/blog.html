@@ -32,12 +32,31 @@
         </article>
         <article>
             <h1>댓글쓰기</h1>
-            <input type="text">
-            <button >입력완료</button>
+            <input type="text" placeholder="댓글 작성하기" id="commentInput">
+            <button onclick="addComment()" >입력완료</button>
+            <div id = "comments">
+                <!--댓글이 표시될 장소-->
+            </div>
         </article>
     </section>
-    <footer>
-        <p> kk란 | 딩사 구경 | 먼작귀 채널</p>
-    </footer>
 </body>
+<footer>
+    <script>
+        function addComment(){
+            const commentInput = document.getElementById("commentInput");
+            const commentText = commentInput.value;
+            if(commentText.trim()===""){
+                alert("댓글을 입력해주세요.");
+                return;
+            }   
+            const commentsBox = document.getElementById("comments");
+            const commentDiv = document.createElement("div");
+            commentDiv.className = "commnet";
+            commentDiv.textContent = commentText;
+            commentsBox.appendChild(commentDiv);
+            commentInput.value=""
+        }
+    </script>
+    <p> kk란 | 딩사 구경 | 먼작귀 채널</p>
+</footer>
 </html>
