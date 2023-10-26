@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <html>내 블로그</html>
+    <meta charset="UTF-8">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        header{
+            background-color: blanchedalmond;
+            padding: 20px;
+        }
+        nav {
+            background-color: beige;
+            width: 30%;
+            height: 450px;
+            padding: 20px;
+            float:left;
+        }
+        nav ul{
+           list-style-type: none;
+           padding: 0;
+        }
+        article{
+            background-color: rgb(233, 233, 233);
+            float:left;
+            padding: 20px;
+            width: 70%;
+            height: 150px;
+        }
+        footer{
+            background-color: brown;
+        }
+        section::after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <h2>블로그 메인</h2>
+    <p>안녕하세요. kk의 블로그 입니다.</p>
+    <header>
+        <img src="1000008016.jpg">
+        <h2>딩딩이는 귀여워</h2>
+    </header>
+    <section>
+        <nav>
+            <ul>
+                <li>kk 블로그</li>
+                <li>딩딩이</li>
+                <li>먼작귀</li>
+            </ul>
+        </nav>
+        <article>
+            <h1>딩딩이의 귀여움</h1>
+            <p>딩딩이는 귀엽다 왜냐하면 귀엽기 때문이다.<br>
+            우리애기 최고 귀여운게 최고다.</p>
+        </article>
+        <article>
+            <h1>먼작귀란?</h1>
+            <p>먼지 같이 작고 귀여운 애들의 줄임말로<br>
+            귀엽다. 주인공이 쮜쮜 캐릭터이다.</p>
+        </article>
+        <article>
+            <h1>댓글쓰기</h1>
+            <input type="text">
+            <button>입력완료</button>
+        </article>
+    </section>
+    <footer>
+        <p> kk란 | 딩사 구경 | 먼작귀 채널</p>
+    </footer>
+</body>
+</html>
