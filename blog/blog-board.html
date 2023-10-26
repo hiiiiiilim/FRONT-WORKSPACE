@@ -40,7 +40,11 @@
             //새 게시물을 담아줄 div생성
             const postDiv = document.createElement("div");
             postDiv.classList.add("post");
-            postDiv.innerHTML = `<h3>${title}</h3>`;
+            postDiv.innerHTML = `
+                <h3>${title}</h3> 
+                <p>${content}</p>
+                <p>게시일 : ${date.toLocaleString()}</p>
+                `;
             posts.appendChild(postDiv);
 
         })
