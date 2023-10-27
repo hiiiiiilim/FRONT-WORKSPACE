@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: beige;
+}
+
+h1{
+    text-align: center;
+}
+
+label{
+    display: block;
+    font-size: 20px;
+}
+input[type="text"], textarea{
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+button[type="submit"]{
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#container{
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+}
