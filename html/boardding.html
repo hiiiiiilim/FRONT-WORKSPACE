@@ -49,8 +49,57 @@
             
             //삭제버튼 생성
             const deleteButton = document.createElement("button");
+            deleteButton.classList.add("delete-button");
+            deleteButton.innerHTML = "삭제하기";
+            deleteButton.addEventListener("click", () =>{
+                postArray.splice(postArray.indexOf(post),1);
+                posts.removeChild(postDiv);
+            });
 
+            //댓글 폼 생성
+            const commentForm = document.createElement("form");
+            commentForm.innerHTML= `
+                <input type="text" name="comment" placeholder="댓글 추가하기">
+                <button type="submit">게시</button>
+            `;
+
+            commentForm.addEventListener("submit", function(event){
+                event.preventDefault();
+                const commentText = commentForm.comment.value;
+                const comment = {
+                    text : commentText,
+                    date : new Date(),
+                };
+                //댓글을 담아줄 div 생성
+                post.comment.push(comment);
+                const commentDiv = document.createElement("div");
+                commentDiv.classList.add("comment");
+                commentDiv.innerHTML = `
+                    <p>${commentText}</p>
+                    <p>게시일 : ${comment.date.toLocaleString()}</p>
+                `;
+                //댓글입력 초기화
+                commentForm.comment.value = "";
+                postDiv.appendChild(commentDiv);
+
+                //댓글 삭제
+                const deleteButton2 = document.createElement("button");
+                deleteButton2.classList.add("delete-button");
+                deleteButton2.innerHTML = "삭제하기";
+                deleteButton2.addEventListener("click", () =>{
+                    postArray.splice(postArray.indexOf(post),1);
+                    postDiv.removeChild(commentDiv);
+                });
+                commentDiv.appendChild(deleteButton2);
+
+                
+            })
+
+          
+            postDiv.appendChild(deleteButton);
+            postDiv.appendChild(commentForm);
             posts.appendChild(postDiv);
+           
         })
        
     </script>

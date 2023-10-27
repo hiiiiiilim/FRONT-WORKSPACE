@@ -36,3 +36,8 @@ button[type="submit"]{
     padding: 5px;
     border-radius: 10px;
 }
+
+.delete-button{
+    background-color: yellowgreen;
+    padding: 10px;
+}
