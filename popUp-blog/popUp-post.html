@@ -1,4 +1,34 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>간단한 팝업 게시글</title>
+</head>
+<body>
+    <h1>블로그 게시글 목록</h1>
+    <ul id="post-list"> <!--게시글 목록이 표시되는 공간-->
 
+    </ul>
+    <h2>게시글 작성</h2>
+    <button id="add-post">게시글 작성</button>
+
+    <div id="post-form">
+        <input id="post-title" type="text" placeholder="제목">
+        <textarea id="post-content" placeholder="내용"></textarea>
+        <button id="save-post">저장</button>
+    </div>
+
+    <script>
+        //게시글 목록을 가져오고 화면에 나타내기
+        function displayPosts(){
+            const postList = document.getElementById("post-list");
+            postList.innerHTML='';
+
+            //localStorage 저장된 항목 수 만큼 반복해서 저장소에 있는 내용을 차례대로 나열하는 for문 작성, 내장된 함수
+            for(let i=0; localStorage.length; i++){ 
+                const key = localStorage.key(i);//localStorage.key(i) localStorage에서 저장된 항목중에서 i번째 항목의 key(키 : 이름)을 가져옴
+                //key(키 : 이름): 데이터를 식별하는 역할
+            }
+        }
+    </script>
+</body>
 </html>
