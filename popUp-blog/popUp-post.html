@@ -24,7 +24,7 @@
             postList.innerHTML='';
 
             //localStorage 저장된 항목 수 만큼 반복해서 저장소에 있는 내용을 차례대로 나열하는 for문 작성, 내장된 함수
-            for(let i=0; localStorage.length; i++){ 
+            for(let i=0; i< localStorage.length; i++){ 
                 const key = localStorage.key(i);//localStorage.key(i) localStorage에서 저장된 항목중에서 i번째 항목의 key(키 : 이름)을 가져옴
                 //key(키 : 이름): 데이터를 식별하는 역할
                 
@@ -36,14 +36,14 @@
                     const post = JSON.parse(localStorage.getItem(key));
                     const listItem = document.createElement('li');
                     listItem.innerHTML = `
-                        <a href="#" data-key=${key}>${post.title}</a>;
+                        <a href="#" data-key=${key}>${post.title}</a>
                     `;
                     postList.appendChild(listItem);
                 }
             }
             
             //게시글 링크를 클릭했을때 팝업창으로 표시하는 이벤트 리스너를 만듦.
-            const postLinks = document.querySelectorAll('#post-list a')
+            const postLinks = document.querySelectorAll('#post-list a');
             //저장된 링크들을 forEach반복문을 사용해서 각 링크에 대한 이벤트 리스너를 등록
             postLinks.forEach((link)=>{
                 //이벤트 리스너는 링크가 클릭될 때 실행
@@ -65,7 +65,7 @@
                         replace : 브라우저 기록에 대한 옵션
                     */
                     const popupWindow = window.open('','','width=400, height=400');
-                    popupWindow.document.write(`<h2>${post.title}</h2>`)
+                    popupWindow.document.write(`<h2>${post.title}</h2>`);
                     popupWindow.document.write(`<p>${post.content}</p>`);
                 });
             });
@@ -109,8 +109,8 @@
             });
         });
 
-        //초기 게시글 목록 표시
-        popupWindow.close();
-    </script>
+       // 초기 게시글 목록 표시
+       displayPosts();    
+       </script>
 </body>
 </html>
