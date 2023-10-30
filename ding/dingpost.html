@@ -2,8 +2,103 @@
 <html>
 <head>
     <title>주접게시물 작성</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+         background-color: beige;
+        }
+
+        button{
+            background-color: blue;
+            border: none;
+            color: white;
+            width: 20%;
+            height: 50px;
+        }
+
+        h1{
+            background-color: rgba(199, 212, 201, 0.637);
+            text-align: center;
+            padding: 10px;
+        }
+        h2{
+            padding: 10px;
+        }
+
+        li {
+            background-color: rgba(199, 212, 201, 0.637);
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>게시글 작성</h1>
+    <h1> 주접게시글 작성</h1>
+    <ul id="post-list">
+
+    </ul>
+
+    <h2>게시글 작성</h2>
+    <button id="add-post">게시글 작성</button>
+
+
+    <script>
+        function displayPosts(){
+            const postList = document.getElementById("post-list");
+            postList.innerHTML='';
+
+            for(let i=0; i<localStorage.length; i++){
+                const key = localStorage.key(i);
+
+                if(key.startsWith('post-')){
+                    const post = JSON.parse(localStorage.getItem(key));
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <a href="#" data-key=${key}>${post.title}</a>
+                    `;
+                    postList.appendChild(listItem);
+                }
+            }
+
+            const postLinks = document.querySelectorAll('#post-list a');
+            postLinks.forEach((link) =>{
+                link.addEventListener('click', (e) =>{
+                    e.preventDefault();
+                    const key = link.getAttribute('data-key');
+                    const post = JSON.parse(localStorage.getItem(key));
+                    const popupWindow = window.open('','','width=400, height=400');
+                    popupWindow.document.write(`<h2>${post.title}</h2>`);
+                    popupWindow.document.write(`<p>${post.content}</p>`);
+                });
+            });    
+        }
+
+        document.getElementById('add-post').addEventListener('click', ()=>{
+            const popupWindow = window.open('','','width=400, height=400');
+            const popupDocument = popupWindow.document;
+
+            popupDocument.write('<h2>게시글 작성</h2>');
+            popupDocument.write('<input type="text" id="post-title" placeholder="제목"><br>');
+            popupDocument.write('<textarea id = "post-content" placeholder="내용"></textarea>');
+            popupDocument.write('<button id="save-post">저장</button>');
+
+            popupDocument.getElementById('save-post').addEventListener('click', ()=>{
+                const title = popupDocument.getElementById('post-title').value;
+                const content = popupDocument.getElementById('post-content').value;
+
+                if(title && content){
+                    const postKey = `post-${Date.now()}`;
+                    const post = {title, content};
+                    localStorage.setItem(postKey, JSON.stringify(post));
+                    displayPosts();
+                    popupWindow.close();
+                }
+            });
+
+        });
+
+        displayPosts();
+    </script>
 </body>
 </html>
