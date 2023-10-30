@@ -28,7 +28,7 @@ article{
 footer{
     /*background-color: rgba(163, 165, 42, 0.582);*/
     /*시작할 색상 정하기*/
-    background:linear-gradient(45deg,rgb(236, 190, 236), red);
+    background:linear-gradient(45deg,rgb(233, 235, 216), rgb(241, 236, 161));
     text-align: center;
     padding: 20px;
 }
@@ -42,4 +42,8 @@ section::after{
         width: 100%;
         height: auto;
     }
+}
+
+li{
+    margin: 10px;
 }
