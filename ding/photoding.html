@@ -38,8 +38,21 @@
             const endIndex = startIndex + imagesPerpag;
             const pageImages = image.slice(startIndex, endIndex);
 
-            
+            imageContainer.innerHTML='';
+
+            pageImages.forEach(images => {
+                const imgElement = document.createElement('img');
+                imgElement.src = image;
+
+                imgElement.classList.add('image');
+                imageContainer.appendChild(imgElement);
+            })
         }
+
+        function updateButtons(){
+            prevButton.disabled = currentPage === 0;
+        }
+        
     </script>
 
 </body>
