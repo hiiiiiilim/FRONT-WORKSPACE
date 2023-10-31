@@ -2,6 +2,31 @@
 <html>
 <head>
     <title>딩딩이 사진구경</title>
+    <style>
+        .img-container{
+    display: flex; /*이미지 가로로 나열*/
+    flex-wrap: wrap; /*가로로 공간이 부족할 경우 다음줄로 넘김*/
+    justify-content: center; /*가로방향으로 중앙 정렬 이미지들이 수평가운데 정렬*/
+    }
+    .image{
+    width: 500px;
+    height: 500px;
+    margin: 10px;
+    }
+    *{
+        background-color: beige;
+    }
+    h1{
+        background-color: rgb(208, 255, 0);
+    }
+    button{
+        background-color: blue;
+        color: white;
+        border: none;
+        width: 100px;
+        height: 50px;
+    }
+    </style>
 </head>
 <body>
 <h1>딩사 구경</h1>
@@ -14,7 +39,7 @@
     </div>
 
     <script>
-        const image = [
+        const images = [
             './img/1000007898.jpg',
             './img/1000008016.jpg',
             './img/1000008056.jpg',
@@ -31,18 +56,18 @@
         const prevButton = document.getElementById('prevPage');
         const nextButton = document.getElementById('nextPage');
 
-        displayImg(currentPage);
+   
 
         function displayImg(page){
-            const startIndex = page *imagesPerpag;
+            const startIndex = page * imagesPerpag;
             const endIndex = startIndex + imagesPerpag;
-            const pageImages = image.slice(startIndex, endIndex);
+            const pageImages = images.slice(startIndex, endIndex);
 
             imageContainer.innerHTML='';
 
             pageImages.forEach(images => {
                 const imgElement = document.createElement('img');
-                imgElement.src = image;
+                imgElement.src = images;
 
                 imgElement.classList.add('image');
                 imageContainer.appendChild(imgElement);
@@ -51,7 +76,26 @@
 
         function updateButtons(){
             prevButton.disabled = currentPage === 0;
+            nextButton.disabled = (currentPage+1)*imagesPerpag >= images.length;
         }
+
+        prevButton.addEventListener('click', () =>{
+            if(currentPage>0){
+                currentPage--;
+                displayImg(currentPage);
+                updateButtons();
+            }
+        });
+
+        nextButton.addEventListener('click', ()=>{
+            if((currentPage+1)*imagesPerpag < images.length){
+                currentPage++;
+                displayImg(currentPage);
+                updateButtons();
+            }
+        });
+        displayImg(currentPage);
+        updateButtons();
         
     </script>
 

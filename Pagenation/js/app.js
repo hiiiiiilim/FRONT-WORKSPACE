@@ -71,7 +71,7 @@ function updateButtons(){
 prevButton.addEventListener('click', () => { //이전버튼에 대한 클릭이벤트, 사용자가 이전버튼을 클릭할 때 이 함수가 실행됨
     if(currentPage > 0){ //현재페이지 번호가 0보다 클 경우에만 실행
         currentPage--; //현재페이지 번호에서 하나를 감소시킴
-        displayImg(currentPage); //새로운 현재 페이지에 해당하는 이미지를 표시
+        displayImg(currentPage); //새로운 현재 페이지에 해당하는 이미지를 표시, 덮어쓰기
         updateButtons(); // 이전 버튼이 첫 번째 페이지에서 클릭하게되면  더이상 이전버튼으로 가지 못하도록 비활성화 시킴
     }
 });

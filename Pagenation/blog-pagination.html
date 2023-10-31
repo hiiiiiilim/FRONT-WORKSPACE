@@ -10,7 +10,7 @@
 
         </ul>
         <div id ="pagination">
-            <h2 id="currentPage">페이지</h2>
+            <h2 id="currentPage">페이지 1</h2>
             <button id="prevPage">이전</button>
             <button id="nextPage">다음</button>
         </div>
@@ -38,7 +38,41 @@
 
             //이전 내용 지우기
             blogPostList.innerHTML='';
-           }
+
+            //게시물을 화면에 나열하고 현재 페이지 번호를 업데이트
+            postToDisplay.forEach(post => {
+                const listItem = document.createElement("li");
+                listItem.textContent = post.content;
+                blogPostList.appendChild(listItem);
+            });
+
+            document.getElementById("currentPage").textContent = `페이지 ${page}`;
+        }
+            //게시물 작성버튼 클릭했을 경우
+            createPostButton.addEventListener('click', function(){
+                //새 게시물 작성 페이지로 이동
+                window.location.href = 'blog_post.html';
+            });
+
+            //이전 버튼 클릭 이벤트 처리
+            document.getElementById("prevPage").addEventListener("click", function(){
+                if(currentPage > 1){
+                    currentPage --;
+                    displayPosts(currentPage);//이전 페이지로 이동하고 게시물을 표시
+                }
+            });
+
+            //다음 버튼 클릭이벤트 처리
+            document.getElementById("nextPage").addEventListener("click", function(){
+                if(currentPage < Math.ceil(savePosts.length / itemsPerPage)){
+                    currentPage++;
+                    displayPosts(currentPage); //다음 페이지로 이동하고 게시물 표시
+                }
+            });
+           
+
+           //초기페이지 로드시 게시물 표시
+           displayPosts(currentPage);
         </script>
     </body>
 </html>
