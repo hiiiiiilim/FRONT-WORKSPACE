@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>딩딩이 사진구경</title>
+</head>
+<body>
+<h1>딩사 구경</h1>
+    <div id="pagenation">
+        <button id="prevPage">이전</button>
+        <div class="img-container">
+            <!--이미지를 추가하는 공간-->
+        </div>
+        <button id = "nextPage">다음</button>
+    </div>
+
+    <script>
+        const image = [
+            './img/1000007898.jpg',
+            './img/1000008016.jpg',
+            './img/1000008056.jpg',
+            './img/1000008487.jpg',
+            './img/img3.jpg',
+            './img/img4.jpg',
+            './img/img5.jpg',
+        ];
+
+        const imagesPerpag = 3;
+        let currentPage = 0; 
+
+        const imageContainer = document.querySelector('.img-container');
+        const prevButton = document.getElementById('prevPage');
+        const nextButton = document.getElementById('nextPage');
+
+        displayImg(currentPage);
+
+        function displayImg(page){
+            const startIndex = page *imagesPerpag;
+            const endIndex = startIndex + imagesPerpag;
+            const pageImages = image.slice(startIndex, endIndex);
+
+            
+        }
+    </script>
+
+</body>
+</html>
