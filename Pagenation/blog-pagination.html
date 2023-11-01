@@ -32,22 +32,22 @@
 
            //페이지에 따라서 게시물 표시
            function displayPosts(page){
-            const startIndex = (page -1) * itemsPerPage;
-            const endIndex = startIndex + itemsPerPage;
-            const postToDisplay = savePosts.slice(startIndex, endIndex);
+                const startIndex = (page -1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const postToDisplay = savePosts.slice(startIndex, endIndex);
 
-            //이전 내용 지우기
-            blogPostList.innerHTML='';
+                //이전 내용 지우기
+                blogPostList.innerHTML='';
 
-            //게시물을 화면에 나열하고 현재 페이지 번호를 업데이트
-            postToDisplay.forEach(post => {
-                const listItem = document.createElement("li");
-                listItem.textContent = post.content;
-                blogPostList.appendChild(listItem);
-            });
+                //게시물을 화면에 나열하고 현재 페이지 번호를 업데이트
+                postToDisplay.forEach(post => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = post.content;
+                    blogPostList.appendChild(listItem);
+                });
 
-            document.getElementById("currentPage").textContent = `페이지 ${page}`;
-        }
+                document.getElementById("currentPage").textContent = `페이지 ${page}`;
+            }
             //게시물 작성버튼 클릭했을 경우
             createPostButton.addEventListener('click', function(){
                 //새 게시물 작성 페이지로 이동

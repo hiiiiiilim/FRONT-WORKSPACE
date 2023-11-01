@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>이미지파일 업로드와 업로드한 파일 미리보기</title>
+    </head>
+    <body>
+        <h1>이미지 파일 업로드 & 업로드한 파일 미리보기</h1>
+        <!--input type을 파일로 지정 후 
+            accept : 허용되는 파일유형을 이미지로 제한
+            * : jpg, jpeg,png등 다양한 이미지 파일을 모두 허용
+            만약에 png파일만 허용하고 싶다면
+            accept="image/png" 왼쪽 코드처럼 작성해주면됨
+        -->
+        <input type="file" id="fileInput" accept="image/*">
+        <button id="uploadButton">업로드</button>
+        
+        <div id="imageContainer">
+            <!--이미지를 표시할 컨테이너-->
+            <img id="uploadImage">
+        </div>
+
+        <script>
+            //파일을 업로드 하는 버튼 클릭시 이벤트 처리
+        </script>
+    </body>
+</html>

@@ -18,42 +18,69 @@
                 <li><a href="dingpost.html">주접게시판</a></li>
             </ul>
         </nav>
-        <article>
+        <div>
             <h1>딩딩이의 귀여움</h1>
             <p>딩딩이는 귀엽다 왜냐하면 귀엽기 때문이다.<br>
             우리애기 최고 귀여운게 최고다.</p>
-        </article>
-        <article>
+        </div>
+        <div>
             <h1>먼작귀란?</h1>
             <p>먼지 같이 작고 귀여운 애들의 줄임말로<br>
             귀엽다. 주인공이 쮜쮜 캐릭터이다.</p>
-        </article>
-        <article>
+        </div>
+        <div>
             <h1>댓글쓰기</h1>
-            <input type="text" placeholder="댓글 작성하기" id="commentInput">
-            <button onclick="addComment()" >입력완료</button>
-            <div id = "comments">
+            <input id="commentInput" placeholder="댓글 작성하기">
+            <button id="commentButton">작성완료</button>
+            <ul id="comments">
                 <!--댓글이 표시될 장소-->
-            </div>
-        </article>
+    
+            </ul>
+            <h2 id="pagination">페이지 1</h2>
+            <button id="prevPage">이전</button>
+            <button id="nextPage">다음</button>
+        </div>
     </section>
 </body>
 <footer>
     <script>
-        function addComment(){
-            const commentInput = document.getElementById("commentInput");
-            const commentText = commentInput.value;
-            if(commentText.trim()===""){
-                alert("댓글을 입력해주세요.");
-                return;
-            }   
-            const commentsBox = document.getElementById("comments");
-            const commentDiv = document.createElement("div");
-            commentDiv.className = "commnet";
-            commentDiv.textContent = commentText;
-            commentsBox.appendChild(commentDiv);
-            commentInput.value=""
+        //댓글기능
+        document.getElementById("commentButton").addEventListener('click', function(commentButton){
+            const commentPostContent = document.getElementById('commentInput').value;
+
+            const savedComments = JSON.parse(localStorage.getItem('commentPosts')) || [];
+            savedComments.push(blogPost);
+            localStorage.setItem('commentPosts', JSON.stringify(savedComments));
+        })
+        //댓글 페이지네이션
+        const comments = document.getElementById("comments");
+        const createPostButton = document.getElementById("commentButton");
+        let savePosts = JSON.parse(localStorage.getItem("commentPosts")) || [];
+
+        const itemsPerPage = 5;
+        let currentPage = 1;
+
+        savePosts = savePosts.reverse();
+
+        function displayPosts(page){
+            const startIndex = (page-1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const postToDisplay = savePosts.slice(startIndex, endIndex);
+
+            comments.innerHTML='';
+
+            postToDisplay.forEach(comment => {
+                const listItem = document.createElement('li');
+                listItem.tabIndex = comment.content;
+                comments.appendChild(listItem);
+
+            });
+            document.getElementById("currentPage").textContent=`페이지 ${page}`;
         }
+
+        displayPosts(currentPage);
+
+
     </script>
     <p> kk란 | <a href="photoding.html" style="cursor: pointer;  text-decoration-line: none;">딩사 구경</a> | <a href="https://youtu.be/GKC1P0mCt4o?si=fNRhQGmEDgdXlhUD" style="cursor: pointer;  text-decoration-line: none;">먼작귀 채널</a></p>
 </footer>
