@@ -10,7 +10,7 @@ header{
 nav {
     background-color: beige;
     width: 30%;
-    height: 600px;
+    height: 750px;
     padding: 20px;
     float:left;
 }
@@ -23,7 +23,7 @@ div{
     float:left;
     padding: 20px;
     width: 70%;
-    height: 150px;
+    height: 200px;
 }
 footer{
     /*background-color: rgba(163, 165, 42, 0.582);*/

@@ -43,7 +43,7 @@
                 <!--댓글이 표시될 장소-->
     
             </ul>
-            <h2 id="pagination">페이지 1</h2>
+            <h2 id="currentPage">페이지 1</h2>
             <button id="prevPage">이전</button>
             <button id="nextPage">다음</button>
         </div>
@@ -105,7 +105,6 @@
             const endIndex = startIndex + itemsPerPage;
             const postToDisplay = savePosts.slice(startIndex, endIndex);
 
-            console.log(page);
             //이전 내용 지우기
             comments.innerHTML='';
 
@@ -117,11 +116,15 @@
                 document.getElementById('commentInput').value="";
 
             });
-            console.log(page);
-            console.log(document.getElementById("currentPage").textContent);
+    
             document.getElementById("currentPage").textContent = `페이지 ${page}`;
            
         }
+
+        //게시물 작성버튼 클릭했을 경우
+        document.getElementById("saveButton").addEventListener('click', function(){
+                window.location.reload();
+        });
 
         //이전 버튼 클릭 이벤트 처리
         document.getElementById("prevPage").addEventListener("click", function(){
@@ -129,11 +132,6 @@
                 currentPage --;
                 displayPosts(currentPage);//이전 페이지로 이동하고 게시물을 표시
             }
-        });
-
-        //게시물 작성버튼 클릭했을 경우
-        document.getElementById("saveButton").addEventListener('click', function(){
-                window.location.reload();
         });
 
         //다음 버튼 클릭이벤트 처리
