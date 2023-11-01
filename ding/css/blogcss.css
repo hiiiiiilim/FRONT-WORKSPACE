@@ -47,3 +47,8 @@ section::after{
 li{
     margin: 10px;
 }
+
+ul > div{
+    width: 300px;
+    background-color: beige;
+}

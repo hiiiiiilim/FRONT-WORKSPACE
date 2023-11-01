@@ -12,7 +12,14 @@
     <section>
         <nav>
             <ul>
-                <img src="./img/1000008016.jpg" style="width: 300px;">
+                <!--프로필사진 변경-->
+                <div id="imageContainer">
+                    <!--이미지를 표시할 컨테이너-->
+                    <img id="uploadImage" src="./img/1000007898.jpg" style="width: 80%;">
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <input type="file" id="fileInput" accept="image/*">
+                <button id="uploadButton">업로드</button>
                 <br><br>
                 <li><a href="boardding.html">방문 이력 남기기</a></li>
                 <li><a href="dingpost.html">주접게시판</a></li>
@@ -31,7 +38,7 @@
         <div>
             <h1>댓글쓰기</h1>
             <input id="commentInput" placeholder="댓글 작성하기">
-            <button id="commentButton">작성완료</button>
+            <button id="saveButton">작성완료</button>
             <ul id="comments">
                 <!--댓글이 표시될 장소-->
     
@@ -40,47 +47,107 @@
             <button id="prevPage">이전</button>
             <button id="nextPage">다음</button>
         </div>
+
+        
     </section>
 </body>
 <footer>
     <script>
-        //댓글기능
-        document.getElementById("commentButton").addEventListener('click', function(commentButton){
-            const commentPostContent = document.getElementById('commentInput').value;
+        //프로필 사진 바꾸기
+        document.getElementById("uploadButton").addEventListener("click", function(){
+            var fileInput = document.getElementById("fileInput");
+            var uploadImage = document.getElementById("uploadImage");
+            var imageContainer = document.getElementById("imageContainer");
+            if(fileInput.files.length > 0){
+                var file = fileInput.files[0];
+                var reader = new FileReader();
 
-            const savedComments = JSON.parse(localStorage.getItem('commentPosts')) || [];
-            savedComments.push(blogPost);
-            localStorage.setItem('commentPosts', JSON.stringify(savedComments));
+                reader.onload = function(e) {
+                    uploadImage.src = e.target.result; 
+                    imageContainer.style.display = "block"; 
+                };
+                reader.readAsDataURL(file); //파일을 Data url 읽는 것
+            }else{
+                alert("이미지 파일을 선택하세요.");
+            }
+        });
+
+        //댓글기능
+        document.getElementById("saveButton").addEventListener('click', function(saveButton){
+            const commentPostContent = document.getElementById('commentInput').value;
+            if(commentPostContent.trim() !== ""){
+                const timeStamp = new Date().getTime();
+                const commentInput={
+                    id: timeStamp,
+                    content: commentPostContent,
+                };
+
+                const savedComments = JSON.parse(localStorage.getItem('commentPosts')) || [];
+                savedComments.push(commentInput);
+                localStorage.setItem('commentPosts', JSON.stringify(savedComments));
+            }else{
+                alert("댓글을 입력하세요.")
+            }
+            
         })
         //댓글 페이지네이션
         const comments = document.getElementById("comments");
-        const createPostButton = document.getElementById("commentButton");
+        const createPostButton = document.getElementById("saveButton");
         let savePosts = JSON.parse(localStorage.getItem("commentPosts")) || [];
 
-        const itemsPerPage = 5;
+        const itemsPerPage = 3;
         let currentPage = 1;
 
         savePosts = savePosts.reverse();
 
         function displayPosts(page){
-            const startIndex = (page-1) * itemsPerPage;
+            const startIndex = (page -1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
             const postToDisplay = savePosts.slice(startIndex, endIndex);
 
+            console.log(page);
+            //이전 내용 지우기
             comments.innerHTML='';
 
-            postToDisplay.forEach(comment => {
-                const listItem = document.createElement('li');
-                listItem.tabIndex = comment.content;
+            //게시물을 화면에 나열하고 현재 페이지 번호를 업데이트
+            postToDisplay.forEach(post => {
+                const listItem = document.createElement("li");
+                listItem.textContent = post.content;
                 comments.appendChild(listItem);
+                document.getElementById('commentInput').value="";
 
             });
-            document.getElementById("currentPage").textContent=`페이지 ${page}`;
+            console.log(page);
+            console.log(document.getElementById("currentPage").textContent);
+            document.getElementById("currentPage").textContent = `페이지 ${page}`;
+           
         }
+
+        //이전 버튼 클릭 이벤트 처리
+        document.getElementById("prevPage").addEventListener("click", function(){
+            if(currentPage > 1){
+                currentPage --;
+                displayPosts(currentPage);//이전 페이지로 이동하고 게시물을 표시
+            }
+        });
+
+        //게시물 작성버튼 클릭했을 경우
+        document.getElementById("saveButton").addEventListener('click', function(){
+                window.location.reload();
+        });
+
+        //다음 버튼 클릭이벤트 처리
+        document.getElementById("nextPage").addEventListener("click", function(){
+            if(currentPage < Math.ceil(savePosts.length / itemsPerPage)){
+                currentPage++;
+                displayPosts(currentPage); //다음 페이지로 이동하고 게시물 표시
+            }
+        });
 
         displayPosts(currentPage);
 
 
+        
     </script>
     <p> kk란 | <a href="photoding.html" style="cursor: pointer;  text-decoration-line: none;">딩사 구경</a> | <a href="https://youtu.be/GKC1P0mCt4o?si=fNRhQGmEDgdXlhUD" style="cursor: pointer;  text-decoration-line: none;">먼작귀 채널</a></p>
 </footer>
