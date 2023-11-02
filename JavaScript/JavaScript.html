@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>자바스크립트</head>
+    <body>
+
+    </body>
+    <script>
+        //변수 var let const
+        /*
+         var : 재할당 재선언 모두 가능, 함수 범위 내에서는 사용하고 접근이 가능
+         let : 재선언 불가 {} 중괄호 속에 작성한 let 중괄호 안에서만 사용가능
+         const : 재할당(업데이트), 재선언 둘다 불가 {} 중괄호 속에 작성한 const는 중괄호 안에서만 사용가능
+        */
+
+        let hi = "say hi";
+        let num = 5;
+        if(num > 2){
+            let hello = "say Hello";
+            /*
+            console.log() : 자바스크립트에 기존에 있던 함수로 메세지를 출력하거나 기능이 작동하지 않을 경우에 정보를 확인하고, 기록하는데 사용
+            */
+            console.log(hello);
+        }
+        
+        var age = 20;
+        if(age >=18 ){
+            var age = 22; //에러안남
+            console.log("성인 입니다.");
+        }else{
+            console.log("미성년자 입니다.");
+        }
+        console.log(age);//22의 결과가 나옴
+
+
+        //삼항연산자  표현식 ? 반환값1 : 반환값2
+        //           표현식이 true일때 반환값 1이 나옴 false일때 반환값2 가 나옴
+        // var numbers = 5;
+        // var msg = (numbers > 0) ? "양수입니다." : "음수이거나 0입니다."
+        // console.log("숫자값 : ",msg);
+
+        //배열
+        var arrOne = [1, true, "hello"];
+        console.log(arrOne);
+        var arrTwo = Array(1, true, "hi"); //값 추가 가능
+        console.log(arrTwo);
+        var arrThree = new Array(); //빈배열의 객체 생성
+        arrThree[88] = "bye";
+        console.log(arrThree);
+        
+        //자바에서는 class로 묶어주었다면 자바스크립트에서는 function으로 묶어줌
+
+    </script>
+</html>

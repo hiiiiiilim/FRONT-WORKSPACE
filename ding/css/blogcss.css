@@ -52,3 +52,9 @@ ul > div{
     width: 300px;
     background-color: beige;
 }
+table{
+    border: 1px solid;
+}
+td{
+    text-align: center;
+}
