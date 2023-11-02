@@ -50,8 +50,6 @@
 
         
     </section>
-</body>
-<footer>
     <script>
         //프로필 사진 바꾸기
         document.getElementById("uploadButton").addEventListener("click", function(){
@@ -61,7 +59,7 @@
             if(fileInput.files.length > 0){
                 var file = fileInput.files[0];
                 var reader = new FileReader();
-
+    
                 reader.onload = function(e) {
                     uploadImage.src = e.target.result; 
                     imageContainer.style.display = "block"; 
@@ -71,7 +69,7 @@
                 alert("이미지 파일을 선택하세요.");
             }
         });
-
+    
         //댓글기능
         document.getElementById("saveButton").addEventListener('click', function(saveButton){
             const commentPostContent = document.getElementById('commentInput').value;
@@ -81,7 +79,7 @@
                     id: timeStamp,
                     content: commentPostContent,
                 };
-
+    
                 const savedComments = JSON.parse(localStorage.getItem('commentPosts')) || [];
                 savedComments.push(commentInput);
                 localStorage.setItem('commentPosts', JSON.stringify(savedComments));
@@ -94,38 +92,38 @@
         const comments = document.getElementById("comments");
         const createPostButton = document.getElementById("saveButton");
         let savePosts = JSON.parse(localStorage.getItem("commentPosts")) || [];
-
+    
         const itemsPerPage = 3;
         let currentPage = 1;
-
+    
         savePosts = savePosts.reverse();
-
+    
         function displayPosts(page){
             const startIndex = (page -1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
             const postToDisplay = savePosts.slice(startIndex, endIndex);
-
+    
             //이전 내용 지우기
             comments.innerHTML='';
-
+    
             //게시물을 화면에 나열하고 현재 페이지 번호를 업데이트
             postToDisplay.forEach(post => {
                 const listItem = document.createElement("li");
                 listItem.textContent = post.content;
                 comments.appendChild(listItem);
                 document.getElementById('commentInput').value="";
-
+    
             });
     
             document.getElementById("currentPage").textContent = `페이지 ${page}`;
            
         }
-
+    
         //게시물 작성버튼 클릭했을 경우
         document.getElementById("saveButton").addEventListener('click', function(){
                 window.location.reload();
         });
-
+    
         //이전 버튼 클릭 이벤트 처리
         document.getElementById("prevPage").addEventListener("click", function(){
             if(currentPage > 1){
@@ -133,7 +131,7 @@
                 displayPosts(currentPage);//이전 페이지로 이동하고 게시물을 표시
             }
         });
-
+    
         //다음 버튼 클릭이벤트 처리
         document.getElementById("nextPage").addEventListener("click", function(){
             if(currentPage < Math.ceil(savePosts.length / itemsPerPage)){
@@ -141,12 +139,15 @@
                 displayPosts(currentPage); //다음 페이지로 이동하고 게시물 표시
             }
         });
-
+    
         displayPosts(currentPage);
-
-
+    
+    
         
     </script>
-    <p> kk란 | <a href="photoding.html" style="cursor: pointer;  text-decoration-line: none;">딩사 구경</a> | <a href="https://youtu.be/GKC1P0mCt4o?si=fNRhQGmEDgdXlhUD" style="cursor: pointer;  text-decoration-line: none;">먼작귀 채널</a></p>
+</body>
+<footer>
+    <p> <a href="aboutkklogin.html" style="cursor: pointer;  text-decoration-line: none;">kk란?</a> | <a href="photoding.html" style="cursor: pointer;  text-decoration-line: none;">딩사 구경</a> | <a href="https://youtu.be/GKC1P0mCt4o?si=fNRhQGmEDgdXlhUD" style="cursor: pointer;  text-decoration-line: none;">먼작귀 채널</a></p>
 </footer>
+
 </html>
