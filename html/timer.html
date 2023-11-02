@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            타이머 이용해서 문구 나타내기
+        </title>
+    </head>
+    <body>
+        <div id="msg">
+
+        </div>
+
+        <script>
+            //5초 후에 메세지 보이게 하는 함수
+            function displayMsg() {
+                var msgDiv = document.getElementById("msg");
+                msgDiv.innerHTML="안녕하세요.";
+            }
+
+            setTimeout(displayMsg, 5000);
+        </script>
+    </body>
+
+</html>
