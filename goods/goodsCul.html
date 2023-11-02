@@ -32,6 +32,30 @@
                 const itemList = document.getElementById("itemList");
                 const totalPrice = document.getElementById("totalPrice");
                 
+                //각 id값의 value(=값)을 알기위해서 value를 붙여줌.
+                const itemValue = itemInput.value;
+                const priceValue = priceInput.value;
+                const countValue = countInput.value;
+                /*
+                    const priceValue = parseInt(priceInput.value);
+                    const priceValue = priceInput.value;
+                */
+                //parseInt : 글자값이나 다른 어떤 값을 정수로 변경해주는 메서드
+                //input type = "number" 작성해줘서 parseInt를 사용하지 않아도 숫자 값이 들어가지만 다양한 변수를 막아주기 위해 사용하는 것을 권장
+               
+                const totalPriceCount = priceValue * countValue;
+               
+                const listItem = document.createElement('li');
+                listItem.textContent = `${itemValue} | 가격 : ${priceValue}원 X ${countValue} = ${totalPriceCount} 원`;
+                itemList.appendChild(listItem);
+
+                total += totalPrice;
+                totalPriceCount.textContent = total + "원";
+
+                itemInput.value="";
+                priceInput.value="0";
+                countInput.value="1";
+
             }
         </script>
     </body>
