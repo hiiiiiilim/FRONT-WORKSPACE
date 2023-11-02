@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>물건 계산하기</title>
+    </head>
+    <body>
+        <div>
+            <label for="item">상품명 : </label>
+            <input type="text" id="item" placeholder="물건 이름">
+            <label for="price">가격 : </label>
+            <input type="number" id="price" placeholder="가격" value="0"> <!--기본값을 0으로 준다.-->
+            <label for="count">갯수 : </label>
+            <input type="number" id="count" placeholder="갯수" value="1">
+            <button onclick="addItem()">추가</button> <!--js에서는 카멜케이스없이 적는 것이 포인트-->
+        </div>
+        <div>
+            <ul id="itemList">
+                <!--추가한 물건 목록 나열-->
+            </ul>
+        </div>
+        <div>
+            <!--p태크안에 span태그를 넣음, div는 묶음처리할때 많이 사용함, p태그는 단락, span 중간에 변동이되는 것, 중간단락-->
+            <p>총 가격 : <span id="totalPrice">0</span>원</p>
+        </div>
+        <script>
+            let total = 0;
+
+            function addItem(){
+                const itemInput = document.getElementById("item");
+                const priceInput = document.getElementById("price");
+                const countInput = document.getElementById("count");
+                const itemList = document.getElementById("itemList");
+                const totalPrice = document.getElementById("totalPrice");
+                
+            }
+        </script>
+    </body>
+</html>
