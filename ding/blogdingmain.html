@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h2>딩딩이는 귀여워</h2>
+        <h2 id="msg">딩딩이는 귀여워</h2>
     </header>
     <section>
         <nav>
@@ -155,7 +155,12 @@
     
         displayPosts(currentPage);
     
-    
+        function displayMsg(){
+            var msghn = document.getElementById("msg");
+            msghn.innerHTML="안녕하세요."
+        }
+
+        setTimeout(displayMsg, 5000);
         
     </script>
 </body>
