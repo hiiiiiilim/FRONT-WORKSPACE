@@ -1,0 +1,16 @@
+제이쿼리(jQuery)
+    자바스크립트 언어를 간편하게 사용할 수 있도록 단순화한 라이브러리
+
+문법
+    $(선택자).동작함수();
+    $ : 제이쿼리에 접근을 할 수 있게 해주는 식별자
+    선택자 : ID나 CLASS 태그명을 선택자
+    선택자를 통해서 원하는 HTML 요소를 선택하고, 동작 함수를 정의내려 원하는 동작을 설정
+
+    1. 주소로 jQuery를 가지고 올 때, 주소값은 고유하게 가지고있어야함
+    <script src = "https://code.jquery.com/jquery-원하는버전.min.js></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" 
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+            crossorigin="anonymous"></script>
+    만약에 원하는 버전을 가지고 오고 싶다면 인터넷 검색창에 https://code.jquery.com/작성해서 이동한 후
+    uncomporessed를 클릭하여 소스코드를 복사해서 가지고온다.
