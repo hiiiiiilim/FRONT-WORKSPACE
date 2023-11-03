@@ -3,7 +3,7 @@
 <head>
     <title>내 블로그</title>
     <meta charset="UTF-8">
-    <script src="./js/input-app.js"></script>
+    <script src="./js/jquery-3.7.1.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/blogcss.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
                 <li><a href="boardding.html">방문 이력 남기기</a></li>
                 <li><a href="dingpost.html">주접게시판</a></li>
             </ul>
-            <table>
+           <table id="toggletb">
                 <tr>
                     <th>이름</th>
                     <th>나이</th>
@@ -38,6 +38,7 @@
                 </tr>
                 
             </table>
+            <button id ="toggleBtn">딩딩이의 정보</button>
         </nav>
         <div>
             <h1>딩딩이의 귀여움</h1>
@@ -105,6 +106,7 @@
         //댓글 페이지네이션
         const comments = document.getElementById("comments");
         const createPostButton = document.getElementById("saveButton");
+
         let savePosts = JSON.parse(localStorage.getItem("commentPosts")) || [];
     
         const itemsPerPage = 3;
@@ -163,6 +165,11 @@
 
         setTimeout(displayMsg, 5000);
         
+        $(function(){
+            $("#toggleBtn").on('click',function(){
+                $("#toggletb").toggle("slow");
+            });            
+        });
     </script>
 </body>
 <footer>
